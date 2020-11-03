@@ -24,5 +24,14 @@ jobs:
     - name: npm build
       run: npm run build
       working-directory: ./DotnetTemplate.Web
+    
+    - name: npm t
+      run: npm t
+      working-directory: ./DotnetTemplate.Web
+    
+    - name: npm run lint
+      run: npm run lint
+      working-directory: ./DotnetTemplate.Web
+      
       
     
