@@ -32,7 +32,10 @@ jobs:
     - name: npm run lint
       run: npm run lint
       working-directory: ./DotnetTemplate.Web
-      
+    
+
+    if: github.ref == 'refs/heads/module_8'
+    steps:
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
       
@@ -52,5 +55,6 @@ jobs:
         file: ./Dockerfile        
         push: true
         tags: veeramasa/dotnettemplate:latest
+        run: exit 0
       
     
