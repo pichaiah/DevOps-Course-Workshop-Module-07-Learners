@@ -5,6 +5,7 @@ jobs:
   build:
     name: Build and test
     runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed
+    if: github.ref == 'refs/heads/module_8'
     steps:
     - uses: actions/checkout@v2 # Adds a step to checkout the repository code
     - uses: actions/setup-dotnet@v1 # Adds a step to setup the .NET
@@ -33,9 +34,6 @@ jobs:
       run: npm run lint
       working-directory: ./DotnetTemplate.Web
     
-
-    if: github.ref == 'refs/heads/module_8'
-    steps:
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
       
