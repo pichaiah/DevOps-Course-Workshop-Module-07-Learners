@@ -4,8 +4,7 @@ on: [push]                      # Will make the workflow run every time you push
 jobs:
   build:
     name: Build and test
-    runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed
-    if: github.ref == 'refs/heads/module_8'
+    runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed    
     steps:
     - uses: actions/checkout@v2 # Adds a step to checkout the repository code
     - uses: actions/setup-dotnet@v1 # Adds a step to setup the .NET
@@ -33,6 +32,16 @@ jobs:
     - name: npm run lint
       run: npm run lint
       working-directory: ./DotnetTemplate.Web
+        
+ deploy:
+    name: Build and test
+    runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - uses: actions/checkout@v2 # Adds a step to checkout the repository code
+    - uses: actions/setup-dotnet@v1 # Adds a step to setup the .NET
+      with:
+        dotnet-version: '3.1.x'      
     
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
